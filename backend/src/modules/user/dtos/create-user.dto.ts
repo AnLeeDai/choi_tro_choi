@@ -1,4 +1,4 @@
-// src/modules/auth/dtos/register.dto.ts
+// src/modules/user/dtos/create-user.dto.ts
 import {
   IsEmail,
   IsNotEmpty,
@@ -24,4 +24,8 @@ export class CreateUserDto {
   @IsString({ message: 'Password must be a string' })
   @MinLength(6, { message: 'Password must be at least 6 characters long' })
   readonly password: string;
+
+  @IsNotEmpty({ message: 'Role is required' })
+  @IsString({ message: 'Role must be a string' })
+  readonly role: string;
 }

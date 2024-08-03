@@ -34,4 +34,8 @@ export class RegisterDto {
   })
   @Match('password', { message: 'Confirm Password must match Password' })
   readonly confirmPassword: string;
+
+  @IsNotEmpty({ message: 'Role is required' })
+  @IsString({ message: 'Role must be a string' })
+  readonly role: string;
 }
