@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { CatsModule } from './cats/module/cats.module';
 import { ConfigModule } from '@nestjs/config';
+import { AuthModule } from './modules/auth/module/auth.module';
 
 @Module({
   imports: [
@@ -9,7 +9,7 @@ import { ConfigModule } from '@nestjs/config';
       isGlobal: true,
     }),
     MongooseModule.forRoot(process.env.MONGO_URI || ''),
-    CatsModule,
+    AuthModule,
   ],
 })
 export class AppModule {}
