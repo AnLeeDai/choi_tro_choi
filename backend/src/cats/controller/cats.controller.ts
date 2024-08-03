@@ -13,11 +13,12 @@ import {
   ConflictException,
   NotFoundException,
 } from '@nestjs/common';
+
 import { CreateCatDto } from '../dto/create-cat.dto';
 import { UpdateCatDto } from '../dto/update-cat.dto';
 import { CatsService } from '../service/cats.service';
 
-@Controller('cats')
+@Controller('cat')
 export class CatsController {
   constructor(private readonly catsService: CatsService) {}
 

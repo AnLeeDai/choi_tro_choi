@@ -14,5 +14,4 @@ export class Cat extends Document {
 }
 
 export const CatSchema = SchemaFactory.createForClass(Cat);
-
 export type CatDocument = Cat & Document;
