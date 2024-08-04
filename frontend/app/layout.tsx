@@ -18,6 +18,10 @@ export const metadata: Metadata = {
   },
 };
 
+interface RootLayoutProps {
+  readonly children: React.ReactNode;
+}
+
 export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "white" },
@@ -25,18 +29,18 @@ export const viewport: Viewport = {
   ],
 };
 
-interface RootLayoutProps {
-  readonly children: React.ReactNode;
-}
-
-export default function RootLayout({ children }: RootLayoutProps) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html suppressHydrationWarning lang="vi">
       <head />
       <body
         className={clsx(
           "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable
+          fontSans.variable,
         )}
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>

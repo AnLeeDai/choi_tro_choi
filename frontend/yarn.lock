@@ -480,7 +480,11 @@
     tailwind-merge "^1.14.0"
     tailwind-variants "^0.1.20"
 
+<<<<<<< HEAD
 "@nextui-org/tooltip@2.0.39", "@nextui-org/tooltip@^2.0.39":
+=======
+"@nextui-org/tooltip@2.0.39":
+>>>>>>> ff2031c8784187e2f81e6865ace86ee662cfe2e2
   version "2.0.39"
   resolved "https://registry.yarnpkg.com/@nextui-org/tooltip/-/tooltip-2.0.39.tgz#4892a6132b5b1937d491640498e97315376f02a0"
   integrity sha512-DWP3XAmVb/SlcdI4SQodtT8ZyMzYMuvRbq4+JQwm+qq1+FGs55z15+8h9DRFQEseEEaDs0hCs6+kgbieZlUitw==
