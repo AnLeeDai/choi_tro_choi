@@ -8,6 +8,7 @@ import { useIsSSR } from "@react-aria/ssr";
 import clsx from "clsx";
 
 import { SunFilledIcon, MoonFilledIcon } from "@/components/icons";
+import { Tooltip } from "@nextui-org/tooltip";
 
 export interface ThemeSwitchProps {
   className?: string;
@@ -34,8 +35,10 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
     getWrapperProps,
   } = useSwitch({
     isSelected: theme === "light" || isSSR,
-    "aria-label": `Switch to ${theme === "light" || isSSR ? "dark" : "light"} mode`,
-    onChange,
+    "aria-label": `Switch to ${
+      theme === "light" || isSSR ? "dark" : "light"
+    } mode`,
+    // onChange,
   });
 
   return (
@@ -44,38 +47,42 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
         className: clsx(
           "px-px transition-opacity hover:opacity-80 cursor-pointer",
           className,
-          classNames?.base,
+          classNames?.base
         ),
       })}
     >
       <VisuallyHidden>
         <input {...getInputProps()} />
       </VisuallyHidden>
-      <div
-        {...getWrapperProps()}
-        className={slots.wrapper({
-          class: clsx(
-            [
-              "w-auto h-auto",
-              "bg-transparent",
-              "rounded-lg",
-              "flex items-center justify-center",
-              "group-data-[selected=true]:bg-transparent",
-              "!text-default-500",
-              "pt-px",
-              "px-0",
-              "mx-0",
-            ],
-            classNames?.wrapper,
-          ),
-        })}
-      >
-        {!isSelected || isSSR ? (
-          <SunFilledIcon size={22} />
-        ) : (
-          <MoonFilledIcon size={22} />
-        )}
-      </div>
+
+      <Tooltip content="Tính năng này đang được phát triển">
+        <div
+          {...getWrapperProps()}
+          className={slots.wrapper({
+            class: clsx(
+              [
+                "w-auto h-auto",
+                "bg-transparent",
+                "rounded-lg",
+                "flex items-center justify-center",
+                "group-data-[selected=true]:bg-transparent",
+                "!text-default-500",
+                "pt-px",
+                "px-0",
+                "mx-0",
+                "disabled",
+              ],
+              classNames?.wrapper
+            ),
+          })}
+        >
+          {!isSelected || isSSR ? (
+            <SunFilledIcon size={22} />
+          ) : (
+            <MoonFilledIcon size={22} />
+          )}
+        </div>
+      </Tooltip>
     </Component>
   );
 };
