@@ -38,7 +38,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
     "aria-label": `Switch to ${
       theme === "light" || isSSR ? "dark" : "light"
     } mode`,
-    onChange,
+    // onChange,
   });
 
   return (
@@ -55,7 +55,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
         <input {...getInputProps()} />
       </VisuallyHidden>
 
-      <Tooltip content="Tính năng này đang được phát triển, có thể gây lỗi trong quá trình sử dụng">
+      <Tooltip content="Tính năng này đang được phát triển">
         <div
           {...getWrapperProps()}
           className={slots.wrapper({

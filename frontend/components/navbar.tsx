@@ -1,11 +1,9 @@
 import {
   Navbar as NextUINavbar,
   NavbarContent,
-  NavbarMenu,
   NavbarMenuToggle,
   NavbarBrand,
   NavbarItem,
-  NavbarMenuItem,
 } from "@nextui-org/navbar";
 import { Link } from "@nextui-org/link";
 import { link as linkStyles } from "@nextui-org/theme";
@@ -14,12 +12,14 @@ import clsx from "clsx";
 
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
-import { GithubIcon, SearchIcon, Logo } from "@/components/icons";
+import { GithubIcon, Logo } from "@/components/icons";
 import { Tooltip } from "@nextui-org/tooltip";
+import { Button } from "@nextui-org/button";
 
 export const Navbar = () => {
   return (
-    <NextUINavbar maxWidth="xl" position="sticky">
+    <NextUINavbar maxWidth="xl" position="sticky" isBordered>
+      {/* navbar Left */}
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
           <NextLink className="flex justify-start items-center gap-1" href="/">
@@ -45,25 +45,27 @@ export const Navbar = () => {
         </ul>
       </NavbarContent>
 
+      {/* Navbar right */}
       <NavbarContent
         className="hidden sm:flex basis-1/5 sm:basis-full"
         justify="end"
       >
-        <NavbarItem className="hidden sm:flex gap-2">
-          <Tooltip content="Source code của dự án">
-            <Link
-              isExternal
-              aria-label="Twitter"
-              href={siteConfig.links.github}
-            >
+        <NavbarItem className="hidden sm:flex gap-5">
+          <Tooltip content="Source code chơi trò chơi">
+            <Link aria-label="Twitter" href={siteConfig.links.github}>
               <GithubIcon className="text-default-500" />
             </Link>
           </Tooltip>
 
           <ThemeSwitch />
+
+          <Button as={NextLink} href={siteConfig.appRoute.login} color="primary">
+            Đăng nhập
+          </Button>
         </NavbarItem>
       </NavbarContent>
 
+      {/* Navbar right responsive */}
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
         <Link isExternal aria-label="Github" href={siteConfig.links.github}>
           <GithubIcon className="text-default-500" />
@@ -74,7 +76,9 @@ export const Navbar = () => {
         <NavbarMenuToggle />
       </NavbarContent>
 
-      <NavbarMenu>
+      {/* Responsive */}
+
+      {/* <NavbarMenu>
         <div className="mx-4 mt-2 flex flex-col gap-2">
           {siteConfig.navMenuItems.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
@@ -94,7 +98,7 @@ export const Navbar = () => {
             </NavbarMenuItem>
           ))}
         </div>
-      </NavbarMenu>
+      </NavbarMenu> */}
     </NextUINavbar>
   );
 };
